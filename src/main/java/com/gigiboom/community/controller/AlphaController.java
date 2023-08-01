@@ -2,6 +2,7 @@ package com.gigiboom.community.controller;
 
 
 import com.gigiboom.community.service.AlphaService;
+import com.gigiboom.community.util.CommunityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,5 +133,13 @@ public class AlphaController {
         list.add(emp);
 
         return list;
+    }
+
+    @RequestMapping(path = "/ajax", method = RequestMethod.POST)
+    @ResponseBody
+    public String testAjax(String name, int age) {
+        System.out.println(name);
+        System.out.println(age);
+        return CommunityUtil.getJSONString(0, "操作成功");
     }
 }
